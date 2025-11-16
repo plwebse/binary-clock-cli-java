@@ -3,6 +3,14 @@
     <groupId>se.plweb.binary-clock-cli-java</groupId>
     <artifactId>binary-clock-cli-java</artifactId>
     <version>1</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.12.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -13,7 +21,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>se.plweb.binaryClockCli.Main</mainClass>
+                            <mainClass>se.plweb.binaryClockCli.BinaryClock</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

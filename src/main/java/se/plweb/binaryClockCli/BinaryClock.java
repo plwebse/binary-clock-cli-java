@@ -2,17 +2,17 @@ package se.plweb.binaryClockCli;
 
 import java.util.List;
 
-public class Main {
+public class BinaryClock {
 
-    public static void main(String[] args) {
-        int rows = 4;
-        int columns = 6;
+    final static int rows = 4;
+    final static int columns = 6;
+
+    public static boolean[][] binaryTimeFrom(long fromEpochTimeInMs){
         boolean[][] clock = new boolean[columns][rows];
         long[] timeGroups = new long[columns / 2];
-        long epochTimeMs = System.currentTimeMillis();
-        timeGroups[0] = epochTimeMs / (1000 * 60 * 60) % 24; // hours
-        timeGroups[1] = epochTimeMs / (1000 * 60) % 60; // minutes
-        timeGroups[2] = epochTimeMs / 1000 % 60; // seconds
+        timeGroups[0] = fromEpochTimeInMs / (1000 * 60 * 60) % 24; // hours
+        timeGroups[1] = fromEpochTimeInMs / (1000 * 60) % 60; // minutes
+        timeGroups[2] = fromEpochTimeInMs / 1000 % 60; // seconds
 
         int col = 0;
         for (long ct : timeGroups) {
@@ -25,6 +25,13 @@ public class Main {
                 col++;
             }
         }
+
+        return clock;
+    }
+
+    public static void main(String[] args) {
+
+        boolean[][] clock = binaryTimeFrom(System.currentTimeMillis());
 
         StringBuilder buffer = new StringBuilder();
         for (int row = 0; row < rows; row++) {
