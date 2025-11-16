@@ -1,3 +1,5 @@
+Simple binary clock cli in java
+
 java -jar target/binary-clock-cli-java-1.jar 
 ```
 0 0 0 0 0 0 
