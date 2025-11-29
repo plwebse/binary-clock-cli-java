@@ -1,5 +1,7 @@
 package se.plweb.binaryClockCli;
 
+import java.time.*;
+
 public class BinaryClock {
 
     final private static int rows = 4;
@@ -40,10 +42,15 @@ public class BinaryClock {
 
 
     public static void main(String[] args) {
+
+        long currentTimeInMillisInUTC = System.currentTimeMillis();
+        long offsetInMillisFromUTCtoCurrentSystemTime = ZonedDateTime.now(ZoneId.systemDefault()).getOffset().getTotalSeconds() * 1000L;
+        long currentSystemTimeInMillis = currentTimeInMillisInUTC + offsetInMillisFromUTCtoCurrentSystemTime;
+
         System.out.println(
                 createClock(
                         binaryTimeFrom(
-                                System.currentTimeMillis()
+                                currentSystemTimeInMillis
                         )
                 )
         );
